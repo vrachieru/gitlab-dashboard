@@ -16,15 +16,25 @@ $(function () {
         return ago(date);
     });
 
-    projects = get_projects(account_type, account_id)
-    projects = enrich_projects_metadata(projects)
 
-    var context = {
-        'projects': projects
-    };
+    function refresh() {
+        projects = get_projects(account_type, account_id)
+        projects = enrich_projects_metadata(projects)
 
-    $("#merge-requests-page section").append(merge_requests_template(context));
-    $("#pipelines-page section").append(pipelines_template(context));
+        var context = {
+            'projects': projects
+        };
 
-    console.log(context);
+        $("#merge-requests-page section").html(merge_requests_template(context));
+        $("#pipelines-page section").html(pipelines_template(context));
+
+        console.log(context);
+    }
+
+    refresh();
+
+    setInterval(
+        function(){ refresh() }, 
+        60 * 1000 * refresh_interval
+    );
 });
