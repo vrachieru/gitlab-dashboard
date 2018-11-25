@@ -1,0 +1,53 @@
+{{#each merge_requests}}
+    <div class="card {{pipeline.status}}">
+        <div class="content">
+            <a class="title small" target="_blank" href="{{ ../web_url }}/..">
+                {{ ../namespace.full_path }}
+            </a>
+            <a class="title" target="_blank" href="{{ ../web_url }}">
+                {{ ../path }}
+            </a>
+            <span class="branch">
+                <i class="fa fa-random"></i>
+                <a target="_blank" href="{{ ../web_url }}/tree/{{ source_branch }}">
+                    {{ source_branch }}
+                </a>
+                &nbsp;to&nbsp;
+                <a target="_blank" href="{{ ../web_url }}/tree/{{ target_branch }}">
+                    {{ target_branch }}
+                </a>
+            </span>
+            <a target="_blank" href="{{ web_url }}">
+                <i class="fa fa-hashtag"></i> {{ id }} - {{ title }}
+            </a>
+        </div>
+        <div class="spacer"></div>
+        <div class="info">
+            <span>
+                <i class="fa fa-list-ul"></i>
+                {{ user_notes_count }}
+            </span>
+            <span>
+                <i class="fa fa-thumbs-up"></i>
+                {{ upvotes }}
+            </span>
+            <span>
+                <i class="fa fa-thumbs-down"></i>
+                {{ downvotes }}
+            </span>
+            <div class="spacer"></div>
+            <span>
+                <i class="fa fa-calendar-o"></i>
+                {{ ago created_at }}
+            </span>
+            <span>
+                <i class="fa fa-calendar-plus-o"></i>
+                {{ ago updated_at }}
+            </span>
+            <span>
+                <i class="fa fa-user"></i>
+                <a target="_blank" href="{{ author.web_url }}">{{ author.name }}</a>
+            </span>
+        </div>
+    </div>
+{{/each}}

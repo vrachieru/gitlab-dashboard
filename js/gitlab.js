@@ -26,19 +26,44 @@ function get_projects(account_type, account_id) {
 
 function enrich_projects_metadata(projects) {
     $.each(projects, function (index, project) {
-        project.pipeline = get_latest_pipeline(project.id, project.default_branch);
+        project.pipeline = get_latest_branch_pipeline(project.id, project.default_branch);
+        project.merge_requests = enrich_merge_requests_metadata(get_merge_requests(project.id, 'opened'));
     });
 
     return projects;
 }
 
-function get_latest_pipeline(project_id, branch) {
+function get_merge_requests(project_id, state) {
+    return api_call(
+        `/projects/${project_id}/merge_requests`,
+        {'state': state}
+    );
+}
+
+function enrich_merge_requests_metadata(merge_requests) {
+    $.each(merge_requests, function (index, merge_request) {
+        merge_request.pipeline = get_latest_merge_request_pipeline(merge_request.project_id, merge_request.iid);
+    });
+
+    return merge_requests;
+}
+
+function get_latest_branch_pipeline(project_id, branch) {
     var result = api_call(
         `/projects/${project_id}/pipelines`,
         {'ref': branch}
     );
 
     return result.length > 0 ? get_pipeline_details(project_id, result[0].id) : null;
+}
+
+function get_latest_merge_request_pipeline(project_id, merge_request_iid) {
+    var result = api_call(
+        `/projects/${project_id}/merge_requests/${merge_request_iid}/pipelines`,
+        {}
+    );
+
+    return result.length > 0 ? result[0] : null;
 }
 
 function get_pipeline_details(project_id, pipeline_id) {

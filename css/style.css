@@ -134,7 +134,7 @@ a {
     font-size: 1rem;
 }
 
-.projects {
+.card-list {
     display: flex;
     flex-wrap: wrap;
     justify-content: left;
@@ -145,12 +145,7 @@ a {
     height: 100%;
 }
 
-.error {
-    color: red;
-    font-weight: bold;
-}
-
-.project-card {
+.card {
     margin: 4px;
     border-radius: 3px;
     background-color: #424242;
@@ -161,112 +156,105 @@ a {
     /*overflow-wrap: break-word;*/
 }
 
-.project-card.success {
+.card.success {
     background-color: #2E7D32;
 }
 
-.project-card.running {
+.card.running {
     background-color: #1565C0;
 }
 
-.project-card.pending {
+.card.pending {
     background-color: #A93F00;
 }
 
-.project-card.failed {
+.card.failed {
     background-color: #C62828;
 }
 
-.project-card.canceled {
+.card.canceled {
     background-color: #010101;
 }
 
-.project-card.skipped {
+.card.skipped {
     background-color: #4b4b4b;
 }
 
-.project-card .content {
+.card .content {
     padding: 12px;
 }
 
-.project-card .content .title {
+.card .content .title {
     font-size: 1rem;
     font-weight: bold;
     text-decoration: none;
     white-space: nowrap;
 }
 
-.project-card .content .title.small {
+.card .content .title.small {
     font-size: 0.8rem;
 }
 
-.project-card .content .no-pipelines {
+.card .content .no-pipelines {
     color: rgba(255, 255, 255, 0.5);
     font-size: 10px;
 }
 
-.project-card .spacer {
+.card .spacer {
     flex-grow: 1;
 }
 
-.project-card .info {
+.card .info {
     padding: 12px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
     align-items: center;
     font-size: 0.8rem;
-    /*color: rgba(255, 255, 255, 0.3);*/
 }
 
-.project-card .info span {
+.card .info span {
     margin-right: 10px;
 }
 
-.pipeline-view {
-    font-size: 0.8rem;
-}
-
-.pipeline-view:not(:last-child) {
-    margin-bottom: 4px;
-}
-
-.pipeline-view i {
+.branch i {
     margin-right: 4px;
 }
 
-.pipeline-view .branch {
+.branch {
     display: flex;
     align-items: center;
     padding: 0 0 2px 0;
+    margin-bottom: 10px;
+    font-size: 0.8rem;
 }
 
-.pipeline-view .pipeline {
+.pipeline {
     display: flex;
     align-items: center;
     color: white;
 }
 
-.pipeline-view .pipeline .pipeline-id {
+.pipeline .pipeline-id {
     margin-right: 8px;
 }
 
-.pipeline-view .pipeline .jobs {
+.pipeline .jobs {
     white-space: nowrap;
     margin-right: 8px;
 }
 
-.job-view {
+.job {
     display: inline-flex;
     align-items: center;
     text-decoration: none;
     color: rgba(255, 255, 255, 0.8);
 }
 
-.job-view:last-child .pipe {
+.job:last-child .pipe {
     display: none;
 }
 
-.job-view .job-circle {
+.job .job-circle {
     width: auto;
     display: inline-flex;
     border: 1.5px solid rgba(255, 255, 255, 0.8);
@@ -277,42 +265,38 @@ a {
     transition: background-color 200ms;
 }
 
-.job-view .job-circle.square {
+.job .job-circle.square {
     width: 24px;
     padding: 0;
 }
 
-.job-view .job-circle.success {
+.job .job-circle.success {
     background-color: #2E7D32;
 }
 
-.job-view .job-circle.running {
+.job .job-circle.running {
     background-color: #1565C0;
 }
 
-.job-view .job-circle.pending, .job-view .job-circle.warning {
+.job .job-circle.pending,
+.job .job-circle.warning {
     background-color: #EF6C00;
 }
 
-.job-view .job-circle.failed {
+.job .job-circle.failed {
     background-color: #C62828;
 }
 
-.job-view .job-circle.canceled {
+.job .job-circle.canceled {
     background-color: #010101;
 }
 
-.job-view .job-circle.skipped, .job-view .job-circle.manual {
+.job .job-circle.skipped,
+.job .job-circle.manual {
     background-color: #4b4b4b;
 }
 
-.job-view .job-circle svg {
-    width: 24px;
-    height: 24px;
-    fill: rgba(255, 255, 255, 0.8);
-}
-
-.job-view .pipe {
+.job .pipe {
     height: 1.5px;
     background-color: rgba(255, 255, 255, 0.8);
     width: 6px;

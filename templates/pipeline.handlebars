@@ -1,0 +1,41 @@
+<div class="card {{ pipeline.status }}">
+    <div class="content">
+        <a class="title small" target="_blank" href="{{ web_url }}/..">
+            {{ namespace.full_path }}
+        </a>
+        <a class="title" target="_blank" href="{{ web_url }}">
+            {{ path }}
+        </a>
+        <a class="branch" target="_blank" href="{{ web_url }}/tree/{{ pipeline.ref }}">
+            <i class="fa fa-random"></i> {{ pipeline.ref }}
+        </a>
+        <div class="pipeline">
+            <a class="pipeline-id" target="_blank" href="{{ pipeline.web_url }}">
+                <i class="fa fa-hashtag"></i> {{ pipeline.id }}
+            </a>
+            <div class="jobs">
+                {{#each pipeline.jobs}}
+                    {{> pipeline-job}}
+                {{/each}}
+            </div>
+            <span class="duration">
+                <i class="fa fa-clock-o"></i>
+                {{ duration pipeline.duration }}
+            </span>
+        </div>
+    </div>
+    <div class="spacer"></div>
+    <div class="info">
+        <div class="spacer"></div>
+        <span>
+            <i class="fa fa-calendar-o"></i>
+            {{ ago pipeline.created_at }}
+        </span>
+        <span>
+            <i class="fa fa-user"></i>
+            <a target="_blank" href="{{ pipeline.user.web_url }}">
+                {{ pipeline.user.name }}
+            </a>
+        </span>
+    </div>
+</div>
