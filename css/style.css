@@ -1,0 +1,319 @@
+html, body, .page {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    transition: all .6s cubic-bezier(.5, .2, .2, 1.1);
+    -webkit-transition: all .6s cubic-bezier(.5, .2, .2, 1.1);
+    -moz-transition: all .6s cubic-bezier(.5, .2, .2, 1.1);
+    -o-transition: all .6s cubic-bezier(.5, .2, .2, 1.1);
+    color: #fff;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    background: #262626;
+    color: white;
+}
+
+* {
+    font-family: 'open sans', 'lato', 'helvetica', sans-serif;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.page {
+    position: absolute;
+}
+
+.page section {
+    width: 95%;
+}
+
+.page .icon {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 5%;
+    left: 0;
+    margin: auto;
+    text-align: center;
+    height: 220px;
+    font-size: 10rem;
+    transform: translateX(5%) !important;
+}
+
+#home-page {
+    left: 0;
+}
+
+#merge-requests-page,
+#pipelines-page,
+#settings-page {
+    left: 200%;
+}
+
+/*switch page*/
+#merge-requests:target #merge-requests-page,
+#pipelines:target #pipelines-page,
+#settings:target #settings-page {
+    transform: translateX(-195%);
+    -webkit-transform: translateX(-195%);
+    -moz-transform: translateX(-195%);
+    -o-transform: translateX(-195%);
+    transition-delay: .4s !important;
+}
+
+#merge-requests:target #home-page .icon,
+#pipelines:target #home-page .icon,
+#settings:target #home-page .icon {
+    -webkit-filter: blur(3px);
+}
+
+#menu {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    height: 300px;
+    width: 5%;
+    padding: 0;
+    text-align: center;
+}
+
+#menu .icon {
+    color: #fff;
+    font-size: 2rem;
+    display: block;
+    margin: 30px 0;
+    transition: all .5s ease-out !important;
+    -webkit-transition: all .5s ease-out;
+    -moz-transition: all .5s ease-out;
+    -o-transition: all .5s ease-out;
+}
+
+#menu .icon:hover {
+    opacity: 0.5;
+}
+
+/*shrink menu icons*/
+#merge-requests:target ul .icon,
+#pipelines:target ul .icon,
+#settings:target ul .icon {
+    transform: scale(.6);
+    -webkit-transform: scale(.6);
+    -moz-transform: scale(.6);
+    -o-transform: scale(.6);
+    transition-delay: .25s;
+}
+
+/*enlarge active icon*/
+#home:target #hme,
+#merge-requests:target #mr,
+#pipelines:target #pipe,
+#settings:target #cfg,
+#settings:target #cinco {
+    transform: scale(1.2) !important;
+    -webkit-transform: scale(1.2) !important;
+    -moz-transform: scale(1.2) !important;
+    -o-transform: scale(1.2) !important;
+}
+
+.title, .hint {
+    display: block;
+}
+
+.title {
+    font-size: 2rem;
+}
+
+.hint {
+    font-size: 1rem;
+}
+
+.projects {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+}
+
+.container {
+    padding: 0 16px;
+    height: 100%;
+}
+
+.error {
+    color: red;
+    font-weight: bold;
+}
+
+.project-card {
+    margin: 4px;
+    border-radius: 3px;
+    background-color: #424242;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    /*max-width: 400px;*/
+    /*overflow-wrap: break-word;*/
+}
+
+.project-card.success {
+    background-color: #2E7D32;
+}
+
+.project-card.running {
+    background-color: #1565C0;
+}
+
+.project-card.pending {
+    background-color: #A93F00;
+}
+
+.project-card.failed {
+    background-color: #C62828;
+}
+
+.project-card.canceled {
+    background-color: #010101;
+}
+
+.project-card.skipped {
+    background-color: #4b4b4b;
+}
+
+.project-card .content {
+    padding: 12px;
+}
+
+.project-card .content .title {
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.project-card .content .title.small {
+    font-size: 0.8rem;
+}
+
+.project-card .content .no-pipelines {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 10px;
+}
+
+.project-card .spacer {
+    flex-grow: 1;
+}
+
+.project-card .info {
+    padding: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    font-size: 0.8rem;
+    /*color: rgba(255, 255, 255, 0.3);*/
+}
+
+.project-card .info span {
+    margin-right: 10px;
+}
+
+.pipeline-view {
+    font-size: 0.8rem;
+}
+
+.pipeline-view:not(:last-child) {
+    margin-bottom: 4px;
+}
+
+.pipeline-view i {
+    margin-right: 4px;
+}
+
+.pipeline-view .branch {
+    display: flex;
+    align-items: center;
+    padding: 0 0 2px 0;
+}
+
+.pipeline-view .pipeline {
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+.pipeline-view .pipeline .pipeline-id {
+    margin-right: 8px;
+}
+
+.pipeline-view .pipeline .jobs {
+    white-space: nowrap;
+    margin-right: 8px;
+}
+
+.job-view {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.job-view:last-child .pipe {
+    display: none;
+}
+
+.job-view .job-circle {
+    width: auto;
+    display: inline-flex;
+    border: 1.5px solid rgba(255, 255, 255, 0.8);
+    border-radius: 1rem;
+    line-height: 1rem;
+    padding: 0 6px;
+    font-size: 12px;
+    transition: background-color 200ms;
+}
+
+.job-view .job-circle.square {
+    width: 24px;
+    padding: 0;
+}
+
+.job-view .job-circle.success {
+    background-color: #2E7D32;
+}
+
+.job-view .job-circle.running {
+    background-color: #1565C0;
+}
+
+.job-view .job-circle.pending, .job-view .job-circle.warning {
+    background-color: #EF6C00;
+}
+
+.job-view .job-circle.failed {
+    background-color: #C62828;
+}
+
+.job-view .job-circle.canceled {
+    background-color: #010101;
+}
+
+.job-view .job-circle.skipped, .job-view .job-circle.manual {
+    background-color: #4b4b4b;
+}
+
+.job-view .job-circle svg {
+    width: 24px;
+    height: 24px;
+    fill: rgba(255, 255, 255, 0.8);
+}
+
+.job-view .pipe {
+    height: 1.5px;
+    background-color: rgba(255, 255, 255, 0.8);
+    width: 6px;
+}
