@@ -23,6 +23,12 @@ a {
     text-decoration: none;
 }
 
+/*not working in firefox*/
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
 .page {
     position: absolute;
 }
