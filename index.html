@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="css/style.css"/>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.6.3/jquery.timeago.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js"></script>
 
     <!--
     <script src="templates/merge-request-list.handlebars" id="merge-request-list-template" type="text/x-handlebars-template"></script>
@@ -69,11 +70,11 @@
                     <div class="spacer"></div>
                     <span>
                         <i class="fa fa-calendar-o"></i>
-                        {{ ago created_at }}
+                        <time class="timeago" datetime="{{ created_at }}"/>
                     </span>
                     <span>
                         <i class="fa fa-calendar-plus-o"></i>
-                        {{ ago updated_at }}
+                        <time class="timeago" datetime="{{ updated_at }}"/>
                     </span>
                     <span>
                         <i class="fa fa-user"></i>
@@ -126,7 +127,7 @@
                     <div class="spacer"></div>
                     <span>
                         <i class="fa fa-calendar-o"></i>
-                        {{ ago pipeline.created_at }}
+                        <time class="timeago" datetime="{{ pipeline.created_at }}"/>
                     </span>
                     <span>
                         <i class="fa fa-user"></i>

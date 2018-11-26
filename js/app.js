@@ -12,11 +12,6 @@ $(function () {
         return duration(seconds);
     });
 
-    Handlebars.registerHelper('ago', function (date) {
-        return ago(date);
-    });
-
-
     function refresh() {
         projects = get_projects(account_type, account_id)
         projects = enrich_projects_metadata(projects)
@@ -29,6 +24,8 @@ $(function () {
         $("#pipelines-page section").html(pipelines_template(context));
 
         console.log(context);
+
+        $("time.timeago").timeago();
     }
 
     refresh();
