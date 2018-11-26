@@ -37,3 +37,21 @@ function duration(seconds) {
 
     return timeString;
 }
+
+// this is why I hate js, no null safety
+function null_safe_get(obj, chain) {
+    return chain.split('.').reduce(function(accumulator, link) {
+        if (accumulator === null) {
+            return;
+        }
+        return accumulator[link];
+    }, obj);
+};
+
+function date_sort(obj, property) {
+    return obj.sort(function (a, b) {
+        a = Date.parse(a[property]);
+        b = Date.parse(b[property]);
+        return a>b ? -1 : a<b ? 1 : 0;
+    });
+}
