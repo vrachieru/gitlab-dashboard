@@ -1,6 +1,4 @@
 $(function () {
-    // load_templates()
-
     var merge_requests_template = Handlebars.compile($('#merge-request-list-template').html());
     Handlebars.registerPartial('merge-request', $('#merge-request-template').html());
 

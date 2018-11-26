@@ -1,17 +1,3 @@
-function load_templates() {
-    $('script[type="text/x-handlebars-template"]').each(function (index, template) {
-        $.ajax({
-            url: $(template).attr('src'),
-            // type: 'get',
-            dataType: 'html',
-            async: false,
-            success: function (data) {
-                $(template).html(data);
-            }
-        });
-    });
-}
-
 function get_url_param(name, dfault) {
     name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
     var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
