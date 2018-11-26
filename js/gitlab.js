@@ -4,6 +4,7 @@ function api_call(path, params) {
         url: `https://${host}/api/v4${path}`,
         type: 'get',
         beforeSend: function (request) {
+            request.setRequestHeader('Access-Control-Allow-Origin', '*');
             request.setRequestHeader('Private-Token', token);
         },
         data: params,
@@ -19,7 +20,7 @@ function api_call(path, params) {
 
 function get_projects(account_type, account_id) {
     return api_call(
-        `/${account_type}s/${account_id}/projects`,
+        `/${account_type}s/${encodeURIComponent(account_id)}/projects`,
         {'per_page': 100}
     );
 }
