@@ -27,6 +27,7 @@ $(function () {
                     'notes': null_safe_get(merge_request, 'user_notes_count'),
                     'upvotes': null_safe_get(merge_request, 'upvotes'),
                     'downvotes': null_safe_get(merge_request, 'downvotes'),
+                    'url': null_safe_get(merge_request, 'web_url'),
                     'project': {
                         'namespace': null_safe_get(project, 'namespace.full_path'),
                         'name': null_safe_get(project, 'path'),
@@ -54,7 +55,7 @@ $(function () {
                     'status': null_safe_get(project, 'pipeline.status'),
                     'jobs' : null_safe_get(project, 'pipeline.jobs'),
                     'duration': null_safe_get(project, 'pipeline.duration'),
-                    'url': null_safe_get(project, 'pipeline.we_url'),
+                    'url': null_safe_get(project, 'pipeline.web_url'),
                     'project': {
                         'namespace': null_safe_get(project, 'namespace.full_path'),
                         'name': null_safe_get(project, 'path'),
