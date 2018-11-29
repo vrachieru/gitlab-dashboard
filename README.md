@@ -20,6 +20,27 @@ Everything runs in your browser so no private information is leaked outside the 
 The dashboard is available via github pages [here](https://vrachieru.github.io/gitlab-dashboard/).  
 Or, you can clone this repository and host your own.
 
+#### Menu logo characteristics
+
+The GitLab icon on the navigation menu displays the state of the dashboard.
+
+| Characteristic   | Dashboard state             |
+| ---------------- | --------------------------- |
+| white            | previous refresh successful |
+| red              | previous refresh failed     |
+| pulsating        | refresh in progress         |
+
+#### Card color codes
+
+The background color for the cards represents the state of the CI for the respective item.
+
+| Color | CI state  |
+| ----- | --------- |
+| green | passed    |
+| red   | failed    |
+| black | cancelled |
+| gray  | skipped   |
+
 ## Configuration
 
 Configuration is done via query params.  
