@@ -24,7 +24,7 @@ $(function () {
                 projects.forEach((project) => {
                     project.merge_requests.forEach((merge_request) => {
                         merge_requests.push({
-                            'id': null_safe_get(merge_request, 'id'),
+                            'id': null_safe_get(merge_request, 'iid'),
                             'title': null_safe_get(merge_request, 'title'),
                             'create_date': null_safe_get(merge_request, 'created_at'),
                             'update_date': null_safe_get(merge_request, 'updated_at'),
