@@ -10,7 +10,14 @@ $(function () {
         return duration(seconds);
     });
 
+    home_menu_item = $('#menu .icon.fa-gitlab')
+
+    refresh_start = () => home_menu_item.addClass('pulsate');
+    refresh_success = () => home_menu_item.removeClass('pulsate failed');
+    refresh_fail = () => home_menu_item.removeClass('pulsate') && home_menu_item.addClass('failed');
+
     function refresh() {
+        refresh_start();
         get_projects(account_type, account_id)
             .then((projects) => {
                 merge_requests = []
@@ -78,9 +85,12 @@ $(function () {
                 $('#pipelines-page section').html(pipelines_template(context));
 
                 $('time.timeago').timeago();
+
+                refresh_success();
             })
             .catch((e) => {
                 console.log('Failed to fetch data', e);
+                refresh_fail();
             });
     }
 
