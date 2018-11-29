@@ -27,7 +27,7 @@ function duration(seconds) {
 // this is why I hate js, no null safety
 function null_safe_get(obj, chain) {
     return chain.split('.').reduce(function(accumulator, link) {
-        if (accumulator === null) {
+        if (accumulator === undefined || accumulator === null) {
             return;
         }
         return accumulator[link];
