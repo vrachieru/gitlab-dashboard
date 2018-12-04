@@ -34,12 +34,14 @@ The GitLab icon on the navigation menu displays the state of the dashboard.
 
 The background color for the cards represents the state of the CI for the respective item.
 
-| Color | CI state  |
-| ----- | --------- |
-| green | passed    |
-| red   | failed    |
-| black | cancelled |
-| gray  | skipped   |
+| Color  | CI state  |
+| ------ | --------- |
+| orange | pending   |
+| blue   | running   |
+| green  | passed    |
+| red    | failed    |
+| black  | cancelled |
+| gray   | skipped   |
 
 ## Configuration
 
